@@ -1,0 +1,109 @@
+/* Change background and text colors. */
+body {
+    background-color: #F4F2EF;
+    color: black;
+}
+
+/* Center the content to multiple HTML elements. */
+header, main, nav, footer {
+    text-align: center;
+}
+
+/* Style the navigation bar. */
+nav a {
+    padding-left: 15px;
+    padding-bottom: 4px;
+    font-size: 1.83em;
+    text-decoration: none;         /* Removes underline */
+    color: #5A5752;              /* By default, links are blue */
+}
+
+nav a:hover {                            /* Psuedo class */
+    border-bottom: 2px orange solid;
+    font-size: 2em;
+    transition: .9s;                     /* transition effect*/
+}
+
+/* Position content side by side using Flexbox for <figure> and <div>*/
+/* These are contained within the <main> tag. */
+main {
+    display: flex;
+    justify-content: center; /* Centers the content */
+}
+
+footer {
+    font-size: 15px;
+    color: red;
+}
+
+table {
+    margin: 0px auto; /* Centers a table or a div. */
+}
+
+/* Add padding to make text more consistent with homepage. */
+td {
+    padding-right: 10px;
+    font-size: 1.3em;
+}
+
+td strong {
+    color: white;
+}
+
+#table-header {
+    background-color: #112E51;
+}
+
+.table-row {
+    background-color: #F4F2EF;
+    color: black;
+}
+
+/* Syle the list. */
+ul {
+    width:500px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+mark.red {
+    color: red;
+    background: none;
+}
+
+/* Header for Index */
+h1 {
+    font-family: 'Pacifico', cusive;
+    font-size: 4em;
+    margin-bottom:0px;
+    color: #112E51
+}
+
+/* Scale down the photos */
+img {
+    width: auto;
+    height: 200px;
+}
+
+/* Home Bio */
+#bio {
+    text-align: center;
+    font-size: 22px;
+}
+
+/* CSUMB logo */
+#csumb-logo {
+    width: 200px;
+    height: auto;
+}
+
+/* Contact Info*/
+iframe {
+    display: block;
+    border-style: solid;
+    margin: 0 auto;
+}
+
+#hobbies-list {
+    text-align: center;
+}
