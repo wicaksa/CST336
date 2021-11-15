@@ -1,0 +1,115 @@
+html {
+    scroll-behavior: smooth;
+}
+
+
+/* Style the navigation bar */
+.navbar {
+    text-align: center;
+    font-size: 25px;
+    list-style: none;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30em;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Noto Sans JP', sans-serif;
+    background: white;
+    border: single;
+    padding-top: 30px;
+    padding-left: 0;
+    padding-right: 0;
+    pointer-events: auto;
+}
+
+h1, h2 {
+    text-align: center;
+    font-family: 'Noto Sans JP', sans-serif;
+    background: white;
+
+}
+p {
+    margin-left: auto;
+    margin-right: auto;
+    width: 30em;
+    font-family: 'Noto Sans JP', sans-serif;
+    background: white;
+}
+
+body {
+    background: white;
+    padding:10px;
+    padding-bottom:50px;
+    user-select: none;
+}
+
+.link {
+    text-align: center;
+    font-family: 'Noto Sans JP', sans-serif;
+    background: white;
+}
+
+address {
+    text-align: center;
+    font-family: 'Noto Sans JP', sans-serif;
+
+}
+
+/* Footer */
+.footer {
+    left: 0;
+    background-color: #cccccc;
+    color: black;
+    text-align: center;
+    font-family: 'Noto Sans JP', sans-serif;
+    background: white;
+    opacity: 0.9;
+    bottom:0;
+    width:30%;
+    height:50px;   /* Height of the footer */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+iframe {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+img{
+    max-width: 30%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#time {
+    text-align: center;
+}
+
+/*  Used properties
+    text-align: center;
+    font-size: 18px;
+    list-style: none;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30em;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Noto Sans JP', sans-serif;
+    background: #faf7f1;
+    border: single;
+    left:
+    bottom;
+    width;
+    color;
+    padding-top;
+    padding-left;
+    padding-right;
+    opacity;
+    scroll-behavior;
+ */
