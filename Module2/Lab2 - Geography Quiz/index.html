@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>US Geography Quiz </title>
+
+    <!-- Bootstrap Library -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!-- JQUERY Library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- underscore.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
+
+
+    <!-- JQUERY SCRIPT -->
+    <script>
+        $(document).ready(function() {
+
+            // Global Variables
+            var score = 0;
+            var attempts = localStorage.getItem("total_attempts");
+
+            // Event Listener
+            $("button").on("click", gradeQuiz);
+
+            // Display choices for question 4 and 8
+            displayQ4Choices();
+            displayQ8Choices();
+
+            function displayQ4Choices() {
+                let q4ChoicesArray = ["Maine", "Rhode Island", "Maryland", "Delaware"];
+                q4ChoicesArray = _.shuffle(q4ChoicesArray);
+
+                for (let i = 0; i < q4ChoicesArray.length; i++) {
+                    $("#q4Choices").append(` <input type="radio" name="q4"
+                    id= "${q4ChoicesArray[i]}" value="${q4ChoicesArray[i]}"> <label for="${q4ChoicesArray[i]}"> ${q4ChoicesArray[i]} </label>`);
+                };
+            };
+
+            function displayQ8Choices() {
+                let q8ChoicesArray = ["Oregon", "New Jersey", "Florida", "New Hampshire"];
+                q8ChoicesArray = _.shuffle(q8ChoicesArray);
+
+                for (let i = 0; i < q8ChoicesArray.length; i++) {
+                    $("#q8Choices").append(` <input type="radio" name="q8"
+                    id= "${q8ChoicesArray[i]}" value="${q8ChoicesArray[i]}"> <label for="${q8ChoicesArray[i]}"> ${q8ChoicesArray[i]} </label>`);
+                };
+            };
+
+            // Checks if the answer is correct
+            function isFormValid() {
+                let isValid = true;
+
+                if ($('#q1').val() == "") {
+                    isValid = false;
+                    $('#validationFdbk').html("Question 1 was not answered.")
+                }
+                return isValid;
+            }
+
+            //  When answer is Correct
+            function rightAnswer(index) {
+                $(`#q${index}Feedback`).html("Correct!");
+                $(`#q${index}Feedback`).attr("class", "bg-success text-white");
+                $(`#markImg${index}`).html("<img src='img/checkmark.png'>");
+                // add 20 to score
+                score += 10;
+            }
+
+            //  When answer is Wrong
+            function wrongAnswer(index) {
+                $(`#q${index}Feedback`).html("Incorrect!");
+                $(`#q${index}Feedback`).attr("class", "bg-warning text-white");
+                $(`#markImg${index}`).html("<img src='img/xmark.png'>");
+            }
+
+            // 1) Display the Total Score message in red if the score is lower than 80 or in green otherwise.
+            // Incremenet total Score
+            function showScore() {
+
+                if (score < 80) {
+                    $("#totalScoreRed").html("Total Score : " + score);
+                } else {
+                    $("#totalScoreGreen").html("Total Score : " + score);
+                    // 2) Display a congratulatory message if the score is above 80 points.
+                    $("#congrats").html("Congrats on getting above an 80!");
+                }
+
+            }
+
+            // Grades the answer from user for q1
+            function gradeQuiz() {
+                // If form is not valid return to the user and reset validation
+                $('#validationFdbk').html("");
+                if (!isFormValid()) {
+                    return;
+                };
+
+                // Keep Track of score and response
+                score = 0;
+                let q1Response = $("#q1").val().toLowerCase(); // Convert to lowercase
+                let q2Response = $("#q2").val()
+                let q4Response = $("input[name=q4]:checked").val();
+                let q5Response = $("#q5").val().toLowerCase(); // Convert to lowercase
+                let q6Response = $("#q6").val()
+                let q8Response = $("input[name=q8]:checked").val();
+                let q9Response = $("#q9").val().toLowerCase();
+                let q10Response = $("input[name=q10]:checked").val();
+
+                // Grade Question 1
+                if (q1Response == "sacramento") {
+                    // correct
+                    rightAnswer(1);
+                } else {
+                    // incorrect
+                    wrongAnswer(1);
+                }
+
+                // Grade Question 2
+                if (q2Response == "mo") {
+                    rightAnswer(2);
+                } else {
+                    wrongAnswer(2);
+                }
+
+                // Grade Question 3 : Make sure only jefferson and roosevelt are clicked
+                if ($("#jefferson").is(":checked") &&
+                    $("#roosevelt").is(":checked") &&
+                    !$("#jackson").is(":checked") &&
+                    !$("#franklin").is(":checked")) {
+                    rightAnswer(3);
+                } else {
+                    wrongAnswer(3);
+                };
+
+                // Grade Question 4
+                if (q4Response == "Rhode Island") {
+                    rightAnswer(4);
+                } else {
+                    wrongAnswer(4)
+                }
+
+
+                if (q5Response == "omaha") {
+                    // correct
+                    rightAnswer(5);
+                } else {
+                    // incorrect
+                    wrongAnswer(5);
+                }
+
+                // Grade Question 6
+                if (q6Response == "four") {
+                    rightAnswer(6);
+                } else {
+                    wrongAnswer(6);
+                }
+
+                // Grade Question 7 :
+                if ($("#arizona").is(":checked") &&
+                    !$("#california").is(":checked") &&
+                    !$("#utah").is(":checked") &&
+                    !$("#washington").is(":checked")) {
+                    rightAnswer(7);
+                } else {
+                    wrongAnswer(7);
+                };
+
+                // Grade Question 8
+                if (q8Response == "New Jersey") {
+                    rightAnswer(8);
+                } else {
+                    wrongAnswer(8)
+                }
+
+                // Grade Question 9
+                if (q9Response == "california") {
+                    // correct
+                    rightAnswer(9);
+                } else {
+                    // incorrect
+                    wrongAnswer(9);
+                }
+
+                // Grade Question 10
+                if ($("#wy").is(":checked") &&
+                    !$("#ak").is(":checked") &&
+                    !$("#nm").is(":checked") &&
+                    !$("#me").is(":checked")) {
+                    rightAnswer(10);
+                } else {
+                    wrongAnswer(10);
+                };
+
+                // Show score
+                showScore();
+
+                //$("#totalScore").html("Total Score : " + score);
+
+                // Show total totalAttempts
+                $("#totalAttempts").html(`Total Attempts : ${++attempts}`);
+
+                // localStorage variable to store total Attempts
+                localStorage.setItem("total_attempts", attempts);
+
+
+                // 2) Display a congratulatory message if the score is above 80 points.
+            };
+        });
+    </script>
+
+</head>
+
+<body class="text-center">
+    <!-- Title -->
+    <h1 class="p-5 bg-secondary"> US Geography Quiz </h1>
+
+    <!-- Question 1 -->
+    <h3><span id="markImg1"></span> What is the capital of California?</h3>
+    <input type="text" id=q1>
+    <br><br>
+    <!-- Tell user if answer is correct or incorrect -->
+    <div id="q1Feedback"></div>
+    <br>
+
+    <!-- Question 2 -->
+    <h3><span id="markImg2"></span> What is the longest River?</h3>
+    <select id="q2">
+        <option value="">Select One</option>
+        <option value="ms">Mississippi</option>
+        <option value="mo">Missouri</option>
+        <option value="co">Colorado</option>
+        <option value="de">Delaware</option>
+    </select>
+    <br><br>
+
+    <!-- Tell user if answer is correct or incorrect -->
+    <div id="q2Feedback"></div>
+    <br>
+
+    <!-- Question 3 -->
+    <h3><span id="markImg3"></span>What presidents are carved into Mount Rushmore?</h3>
+    <input type="checkbox" id="jackson"> <label for="jackson"> A. Jackson </label><br>
+    <input type="checkbox" id="franklin"> <label for="franklin"> B. Franklin</label><br>
+    <input type="checkbox" id="jefferson"> <label for="jefferson"> T. Jefferson </label><br>
+    <input type="checkbox" id="roosevelt"> <label for="roosevelt"> T. Roosevelt </label><br>
+    <br><br>
+    <div id="q3Feedback"></div>
+    <br>
+
+    <!-- Question 4 -->
+    <h3><span id="markImg4"></span> What is the smallest US State?</h3>
+    <div id="q4Choices"></div>
+    <br>
+    <div id="q4Feedback"></div>
+
+    <!-- Question 5 -->
+    <h3><span id="markImg5"></span> What is the capital of Nebraska?</h3>
+    <input type="text" id=q5>
+    <br><br>
+
+    <!-- Tell user if answer is correct or incorrect -->
+    <div id="q5Feedback"></div>
+    <br>
+
+    <!-- Question 6 -->
+    <h3><span id="markImg6"></span> How many states have a border with Mexico?</h3>
+    <select id="q6">
+        <option value="">Select One</option>
+        <option value="one">1</option>
+        <option value="two">2</option>
+        <option value="three">3</option>
+        <option value="four">4</option>
+    </select>
+    <br><br>
+    <!-- Tell user if answer is correct or incorrect -->
+    <div id="q6Feedback"></div>
+    <br>
+
+    <!-- Question 7 -->
+    <h3><span id="markImg7"></span>Where can you find the Great Canyon Park?</h3>
+    <input type="checkbox" id="washington"> <label for="washington"> Washington </label><br>
+    <input type="checkbox" id="california"> <label for="california"> California</label><br>
+    <input type="checkbox" id="arizona"> <label for="arizona"> Arizona </label><br>
+    <input type="checkbox" id="utah"> <label for="utah"> Utah </label><br>
+    <br><br>
+    <div id="q7Feedback"></div>
+    <br>
+
+    <!-- Question 8 -->
+    <h3><span id="markImg8"></span> What state is known as 'The Garden State'?</h3>
+    <div id="q8Choices"></div>
+    <br>
+    <div id="q8Feedback"></div>
+
+    <!-- Tell user if answer is correct or incorrect -->
+    <div id="q8Feedback"></div>
+    <br>
+
+    <!-- Question 9 -->
+    <h3><span id="markImg9"></span> Where is Death Valley?</h3>
+    <input type="text" id=q9>
+    <br><br>
+    <!-- Tell user if answer is correct or incorrect -->
+    <div id="q9Feedback"></div>
+    <br>
+
+    <!-- Question 10 -->
+    <h3><span id="markImg10"></span>What is the least populated state?</h3>
+    <input type="checkbox" id="ak"> <label for="ak"> Alaska </label><br>
+    <input type="checkbox" id="nm"> <label for="nm"> New Mexico</label><br>
+    <input type="checkbox" id="me"> <label for="me"> Maine </label><br>
+    <input type="checkbox" id="wy"> <label for="wy"> Wyoming </label><br>
+    <br><br>
+    <div id="q10Feedback"></div>
+    <br>
+
+    <!-- Feedback if user does not enter anything -->
+    <h3 id="validationFdbk" class="bg-danger text-white"> </h3>
+    <br>
+
+    <!-- Button created using Bootstrap classes -->
+    <button type="button" class="btn btn-outline-primary">SUBMIT QUIZ</button>
+    <br><br>
+
+    <!-- Displays total score to the user -->
+    <h2 id="congrats" class="text-primary"></h2>
+    <h2 id="totalScoreRed" class="text-danger"></h2>
+    <h2 id="totalScoreGreen" class="text-success"></h2>
+
+
+    <h3 id="totalAttempts"></h3>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

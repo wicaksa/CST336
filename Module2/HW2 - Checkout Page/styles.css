@@ -1,0 +1,95 @@
+.content {
+    padding-left: 15%;
+    padding-right: 15%;
+    padding-top: 2%;
+    padding-bottom: 0%;
+    display: inline-block;
+    align-content: center;
+}
+
+.card-title {
+    font-size: 24px;
+}
+.card-text {
+    font-size: 14px;
+}
+
+#navbar {
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+#logo {
+    width: 20%;
+    height: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button{
+    float: right;
+}
+
+#taxtest, #totaltest, #item1test, #item2test, #item3test, #shippingtest, #promotest {
+  white-space: nowrap; /* prevents price from wrapping to next row */
+}
+
+.promoPics {
+    position: relative;
+}
+
+#promoGood {
+    visibility: hidden;
+    white-space: nowrap;
+    width: 3%;
+    height: auto;
+    position: relative;
+    z-index: 2;
+}
+
+#promoBad {
+   visibility: hidden;
+   white-space: nowrap;
+   width: 3%;
+   height: auto;
+   position: relative;
+   z-index: 1;
+   top: 0px;
+   left: -35px;
+}
+
+.footer {
+  height: 142px;
+  text-align: center;
+}
+
+#cartImg {
+    position: relative;
+    top: 30px;
+    left: 50px;
+    width: 2%;
+    height: auto;
+}
+
+#usps {
+    width: 4%;
+    height: auto;
+    visibility: hidden;
+    position: relative;
+    z-index: 1;
+    top: 0px;
+    left: -40px;
+}
+
+#ups {
+    width: 3%;
+    height: auto;
+    visibility: hidden;
+    position: relative;
+    z-index: 2;
+)
+
+#descriptors {
+    text-align: center;
+}
